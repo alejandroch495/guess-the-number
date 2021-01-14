@@ -1,12 +1,38 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="JS/script.js"></script>
 </head>
 
 <body>
-    <h1>Guess The Number!</h1>
+    <div>
+        <h1>Guess These Number!</h1>
+    </div>
+    <div id="gameButtons">
+        <button id="startButton">
+          Start game
+        </button>
+    </div>
+
+    </div>
+
+    <script>
+        let numGuesses;
+        let num = Math.floor(Math.random() * 10) + 1;
+        let gotIt = false;
+        let guess = prompt("test");
+
+        while (gotIt === false) {
+            if (num == guess) {
+                numGuesses++;
+                gotIt = true;
+            } else {
+                guess = prompt("Wrong! Guess again!");
+            }
+        }
+        alert("You guessed: " + guess + " \nThe number was: " + num)
+    </script>
 </body>
 
 </html>
