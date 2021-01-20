@@ -1,37 +1,52 @@
 <html>
 
 <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="JS/script.js"></script>
 </head>
 
 <body>
     <div>
-        <h1>Guess These Number!</h1>
+        <h1 id="title">Guess The Number!</h1>
     </div>
     <div id="gameButtons">
-        <button id="startButton">
-          Start game
+        <button id="startButton" onclick=StartGame()>
+            Start game
         </button>
+        <div>
+            <div id="numGuesses">
+
+            </div>
+        </div>
     </div>
 
     </div>
 
     <script>
-        let numGuesses;
-        let num = Math.floor(Math.random() * 10) + 1;
-        let gotIt = false;
-        let guess = prompt("test");
+        function StartGame() {
+            let numGuesses = 0;
+            let num = Math.floor(Math.random() * 100) + 1;
+            let gotIt = false;
+            let guess = prompt("Guess a number from 1-100");
 
-        while (gotIt === false) {
-            if (num == guess) {
-                numGuesses++;
-                gotIt = true;
-            } else {
-                guess = prompt("Wrong! Guess again!");
+            while (gotIt === false) {
+                if (num == guess) {
+                    numGuesses++;
+                    alert("Congratulations! You guessed the correct number, which was " + num + " and it took you " + numGuesses + " guesses.");
+                    gotIt = true;
+                } else if (num > guess) {
+                    numGuesses++;
+                    guess = prompt("Wrong! Your guess is lower. Guess again!");
+                }
+                else {
+                    numGuesses++;
+                    guess = prompt("Wrong! Your guess is higher. Guess again!");
+                }
             }
+            alert("You guessed: " + guess + " \nThe number was: " + num);
         }
-        alert("You guessed: " + guess + " \nThe number was: " + num)
     </script>
 </body>
 
